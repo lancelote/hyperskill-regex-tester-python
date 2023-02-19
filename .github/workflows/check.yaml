@@ -1,0 +1,28 @@
+name: check
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: prepare
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: install
+        run: pip install -r requirements.txt
+
+      - name: test
+        run: PYTHONPATH=. pytest
+
+      - name: lint
+        run: pre-commit run --all-files

@@ -1,0 +1,11 @@
+# PyCharm
+.idea/
+
+# Virtual environment
+.venv/
+
+# pytest
+.pytest_cache/
+
+# ruff
+.ruff_cache/
